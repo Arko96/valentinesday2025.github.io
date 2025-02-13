@@ -1,0 +1,143 @@
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #3b8d99); /* Gradient in shades of blue */
+    font-family: 'Arial', sans-serif;
+    color: white; /* Change text color to white for better contrast */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+}
+
+.container {
+    text-align: center;
+    position: relative; /* Ensure the container is a positioning context */
+}
+
+/* Heart shape */
+.heart {
+    width: 100px;
+    height: 90px;
+    position: relative;
+    animation: beat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 52px;
+    height: 80px;
+    background-color: red;
+    border-radius: 50px 50px 0 0;
+}
+
+.heart::before {
+    left: 50px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Big center heart */
+.big-heart {
+    width: 150px; /* Larger size */
+    height: 135px; /* Larger size */
+    margin: 0 auto 20px; /* Center horizontally and add space below */
+}
+
+.big-heart::before,
+.big-heart::after {
+    width: 78px; /* Adjusted for larger heart */
+    height: 120px; /* Adjusted for larger heart */
+}
+
+.big-heart::before {
+    left: 75px; /* Adjusted for larger heart */
+}
+
+/* Tiny floating hearts */
+.tiny-heart {
+    width: 30px; /* Smaller size */
+    height: 27px; /* Smaller size */
+    position: absolute;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0; /* Start invisible */
+    animation-fill-mode: forwards; /* Keep the final state of the animation */
+}
+
+.tiny-heart::before,
+.tiny-heart::after {
+    content: '';
+    position: absolute;
+    width: 16px; /* Adjusted for smaller heart */
+    height: 24px; /* Adjusted for smaller heart */
+    background-color: red;
+    border-radius: 50px 50px 0 0;
+}
+
+.tiny-heart::before {
+    left: 15px; /* Adjusted for smaller heart */
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.tiny-heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.5);
+    }
+}
+
+/* Heartbeat animation */
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Message animation */
+.message {
+    font-size: 2em;
+    color: white; /* Ensure the text is white for better visibility */
+    animation: fadeIn 2s infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
